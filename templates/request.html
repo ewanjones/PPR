@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project Planning Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet">
+    <link href="../static/css/bootstrap-theme.css" rel="stylesheet">
+
+    <!-- Datepicker -->
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+  </head>
+
+
+  <body>
+
+      <nav class="navbar navbar-default" role="navigation">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Planning Projects Register</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Request</a></li>
+                <li><a href="#">Tracker</a></li>
+                <li><a href="#">Dashboard</a></li>
+              </ul>
+
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Settings</a></li>
+              </ul>
+          </div>
+      </nav>
+
+      <!-- FORM FOR REQUESTS -->
+      <div class="container" style="max-width: 400px; padding: 20px;">
+        <form class="form">
+
+          <!-- Type -->
+          <div class="form-group">
+              <label for="type">Type</label>
+              <select class="form-control" id="sel1">
+                <option></option>
+                <option>CEO escalation</option>
+                <option>Community funded project</option>
+                <option>Ethernet tails</option>
+                <option>MDUs</option>
+                <option>Spine</option>
+                <option>Whitespace</option>
+                <option>Commissioning</option>
+              </select>
+          </div>
+
+          <!-- Product -->
+          <div class="form-group">
+              <label for="type">Product</label>
+              <select class="form-control" id="sel1">
+                <option></option>
+                <option>CURE (copper rearrangement)</option>
+                <option>Ethernet</option>
+                <option>FTTC (fibre to the cabinet)</option>
+                <option>FTTP (fibre to the premise)</option>
+                <option>FTTRN (fibre to the remote note)</option>
+              </select>
+          </div>
+
+          <!-- Activity -->
+          <div class="form-group">
+              <label for="type">Activity</label>
+              <select class="form-control" id="sel1">
+                <option></option>
+                <option>First Look (Feasibility quick look and quick costing)</option>
+                <option>Desktop survey (Feasibility and detailed costing)</option>
+                <option>Complete Estimate (Full plan and build)</option>
+              </select>
+          </div>
+
+          <!-- Exchange -->
+          <div class="form-group">
+            <label for="exchange">Exchange</label>
+            <textarea class="form-control" rows="1" id="exchange"></textarea>
+          </div>
+
+          <!-- PCP -->
+          <div class="form-group">
+            <label for="pcp">PCP</label>
+            <textarea class="form-control" rows="1" id="pcp"></textarea>
+          </div>
+
+          <!-- DPs -->
+          <div class="form-group">
+            <label for="dps">DPs</label>
+            <textarea class="form-control" rows="1" id="dps"></textarea>
+          </div>
+
+          <!-- Date Received (NOT WORKING)-->
+          <div class="form-group">
+            <label for="dps">Date Received</label>
+            <div class='input-group date' id='datetimepicker1'>
+              <input type='text' class="form-control" />
+              <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+
+            <script type="text/javascript">
+                    $('#datetimepicker1').datetimepicker();
+            </script>
+          </div>
+
+          <!-- Date Required (NOT WORKING) -->
+          <div class="form-group">
+            <label for="dps">Date Received</label>
+            <div class='input-group date' id='datetimepicker1'>
+              <input type='text' class="form-control" />
+              <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+          </div>
+
+          <!-- Priority -->
+          <div class="form-group">
+              <label for="priority">Priority</label>
+              <select class="form-control" id="sel1">
+                <option></option>
+                <option>CAT 1 (must be done now next 2 weeks)</option>
+                <option>CAT 2 (important but can wait up to 1 month)</option>
+                <option>CAT 3 (low priority of infill work)</option>
+              </select>
+          </div>
+
+          <!-- Lead Customer -->
+          <div class="form-group">
+            <label for="lead">Lead Customer</label>
+            <textarea class="form-control" rows="1" id="lead"></textarea>
+          </div>
+
+          <!-- THP -->
+          <div class="form-group">
+            <label for="thp">THP</label> // ONLY NUMBERS ALLOWED
+            <textarea class="form-control" rows="1" id="thp"></textarea>
+          </div>
+
+          <!-- Other -->
+          <div class="form-group">
+            <label for="info">Additional Information</label>
+            <textarea class="form-control" rows="5" id="info"></textarea>
+          </div>
+
+          <!-- SUBMIT -->
+          <br>
+          <button type="submit" class="btn btn-default">Submit</button>
+
+        </form>
+      </div>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>
