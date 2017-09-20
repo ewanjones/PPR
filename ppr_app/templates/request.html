@@ -1,0 +1,192 @@
+{% extends "template.html" %}
+
+{% block navbar %}
+  <li class="active"><a href="{{ url_for('requestproj') }}">Request</a></li>
+  <li><a href="{{ url_for('tracker') }}">Tracker</a></li>
+  <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+{% endblock %}
+
+
+{% block content %}
+<div class="container-fluid">
+  <p>Please select from the following options. Selecting the <strong>type</strong> field will show the relevant fields.</p>
+
+  <!-- FORM FOR REQUESTS -->
+  <div class="col-xs-10" style="max-width: 600px; padding: 20px;">
+    <form class="form"
+          id="requestForm"
+          method="POST"
+          enctype="multipart/form-data"
+          action="/PPR/request/"
+          onsubmit="validateForm()">
+
+          <div id="initialrequest">
+            <!-- Product -->
+            <div class="form-group" id="product">
+              <label for="type">Product</label>
+              <div>{{ form.product(class_="form-control", id="sel1") }}</div>
+              {% if form.product.errors %}
+                <ul class="errors">{% for error in form.title.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+              {% endif %}
+            </div>
+            <br>
+
+            <!-- Type -->
+            <div class="form-group" id='proj_type'>
+                <label for="type">Request Type</label>
+                <div>{{ form.proj_type(class_="form-control", id="type_select") }}</div>
+                {% if form.proj_type.errors %}
+                  <ul class="errors">{% for error in form.proj_type.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+                {% endif %}
+            </div>
+        </div>
+
+        <div id="selectedquestions">
+          <!-- Title -->
+          <div class="form-group" id="title">
+            <label class="control-label" for="title">Title</label>
+            <div>{{ form.title(class_="form-control") }}</div>
+            {% if form.title.errors %}
+              <ul class="errors">{% for error in form.title.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+            {% endif %}
+          </div>
+
+        <!-- Activity -->
+        <div class="form-group" id="activity">
+            <label for="type">Activity</label>
+            <div>{{ form.activity(class_="form-control", id="sel1") }}</div>
+            {% if form.activity.errors %}
+              <ul class="errors">{% for error in form.activity.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+            {% endif %}
+        </div>
+
+        <!-- Exchange -->
+        <div class="form-group"  id="exchange">
+          <label for="exchange">Exchange</label>
+          <div>{{ form.exchange(class_="form-control", rows="1") }}</div>
+          {% if form.exchange.errors %}
+            <ul class="errors">{% for error in form.exchange.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+
+        <!-- PCP -->
+        <div class="form-group" id="pcp">
+          <label for="pcp">PCP</label>
+          <div>{{ form.pcp(class_="form-control", rows="1") }}</div>
+          {% if form.pcp.errors %}
+            <ul class="errors">{% for error in form.pcp.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+
+        <!-- DPs -->
+        <div class="form-group" id="dps">
+          <label for="dps">DPs</label>
+          <div>{{ form.dps(class_="form-control", rows="1") }}</div>
+          {% if form.dps.errors %}
+            <ul class="errors">{% for error in form.dps.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+
+
+        <!-- Date Received -->
+        <div class="form-group" id="datereceived">
+          <label for="dps">Date Received</label>
+          <div>{{ form.dateReceived(class_="form-control", id="datepicker1") }}</div>
+          {% if form.dateReceived.errors %}
+            <ul class="errors">{% for error in form.dateReceived.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+
+
+        <!-- Date Required -->
+        <div class="form-group" id="daterequired">
+          <label for="dps">Date Required</label>
+          <div>{{ form.dateRequired(class_="form-control", id="datepicker2") }}</div>
+          {% if form.dateRequired.errors %}
+            <ul class="errors">{% for error in form.dateRequired.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+
+        <!-- Priority -->
+        <div class="form-group" id="priority">
+            <label for="priority">Priority</label>
+            <div>{{ form.priority(class_="form-control", id="sel1") }}</div>
+            {% if form.priority.errors %}
+              <ul class="errors">{% for error in form.priority.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+            {% endif %}
+        </div>
+
+        <!-- Requested By -->
+        <div class="form-group" id="requestedby">
+          <label for="lead">Requested By</label>
+          <div>{{ form.requestedBy(class_="form-control", rows="1") }}</div>
+          {% if form.requestedBy.errors %}
+            <ul class="errors">{% for error in form.requestedBy.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+
+        <!-- THP -->
+        <div class="form-group" id="thp">
+          <label for="thp">THP</label>
+          <div>{{ form.thp(class_="form-control", rows="1") }}</div>
+          {% if form.thp.errors %}
+            <ul class="errors">{% for error in form.thp.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+
+        <!-- WFMT ID -->
+        <div class="form-group" id="wfmt">
+          <label for="wfmt">WFMT ID</label>
+          <div>{{ form.wfmt(class_="form-control", rows="1") }}</div>
+          {% if form.wfmt.errors %}
+            <ul class="errors">{% for error in form.wfmt.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+
+        <!-- CFP Ref -->
+        <div class="form-group" id="cfp">
+          <label for="cfp">CFP Ref</label>
+          <div>{{ form.cfp(class_="form-control", rows="1") }}</div>
+          {% if form.cfp.errors %}
+            <ul class="errors">{% for error in form.cfp.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+
+
+        <!-- OGEA Ref -->
+        <div class="form-group" id="ogea">
+          <label for="ogea">OGEA Ref</label>
+          <div>{{ form.ogea(class_="form-control", rows="1") }}</div>
+          {% if form.ogea.errors %}
+            <ul class="errors">{% for error in form.ogea.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+
+        <!-- ONEA Ref -->
+        <div class="form-group" id="onea">
+          <label for="onea">ONEA Ref</label>
+          <div>{{ form.onea(class_="form-control", rows="1") }}</div>
+          {% if form.onea.errors %}
+            <ul class="errors">{% for error in form.onea.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+
+        <!-- Notes -->
+        <div class="form-group" id="notes">
+          <label for="notes">Additional Information</label>
+          <div>{{ form.notes(class_="form-control") }}</div>
+          {% if form.notes.errors %}
+            <ul class="errors">{% for error in form.notes.errors %}<li>{{ error }}</li>{% endfor %}</ul>
+          {% endif %}
+        </div>
+
+        <!-- SUBMIT -->
+        <br>
+        <div id="submit">{{ form.submit(class_="btn btn-default", id="submit") }}</div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "template.html" %}
+
+{% block navbar %}
+  <li><a href="{{ url_for('requestproj') }}">Request</a></li>
+  <li><a href="{{ url_for('tracker') }}">Tracker</a></li>
+  <li class="active"><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+{% endblock %}
+
+{% block content %}
+
+<p>This will be the <strong>DASHBOARD</strong></p>
+
+{% endblock %}

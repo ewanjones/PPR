@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project Planning Register</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boostrap -->
+    <link href="../static/css/bootstrap.css" rel="stylesheet" style="text/css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1" crossorigin="anonymous">
+    <!-- Datepicker -->
+    <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.12/themes/ui-lightness/jquery-ui.css" rel="stylesheet" />
+    <link type="text/css" rel="stylesheet" href="../static/css/custom.css">
+  </head>
+
+
+  <body>
+
+      <nav class="navbar navbar-default" role="navigation">
+          <!-- Brand and toggle get grouped for better mobile display -->
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Planning Projects Register</a>
+          </div>
+
+          <!-- Collect the nav links, forms, and other content for toggling -->
+          <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                {% block navbar %}
+                                <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+                {% endblock %}
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="url_for(settings)">Settings</a></li>
+              </ul>
+
+          </div>
+      </nav>
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          {% for message in messages %}
+            </div class="alert alert-success">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
+
+      <!-- CONTENT -->
+      {% block content %}
+
+      {% endblock %}
+
+
+      <!-- jQuery and jQuery ui -->
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src = "https://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
+
+      <!-- Bootstrap.js -->
+      <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+      <!-- MY FILES -->
+      <script type="text/javascript" src="../static/js/request.js"></script>
+      <script type="text/javascript" src = "../static/js/infopage.js"></script>
+
+      <!-- Load datepickers -->
+      <script>
+      $(function() {
+        $( "#datepicker1" ).datepicker({dateFormat: "dd-mm-yy"});
+        $( "#datepicker2" ).datepicker({dateFormat: "dd-mm-yy"});
+      })
+      </script>
+
+  </body>
+</html>

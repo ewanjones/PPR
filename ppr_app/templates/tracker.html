@@ -1,0 +1,139 @@
+{% extends "template.html" %}
+
+{% block navbar %}
+  <li><a href="{{ url_for('requestproj') }}">Request</a></li>
+  <li class="active"><a href="{{ url_for('tracker') }}">Tracker</a></li>
+  <li><a href="{{ url_for('dashboard') }}">Dashboard</a></li>
+{% endblock %}
+
+{% block content %}
+
+<!-- MODAL -->
+<div id="editModal" class="modal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Content -->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">View Project</h4>
+      </div>
+      <div class="modal-body">
+        <div>
+          <label>Proj ID: </label>
+          <p id="pid"></p>
+        </div>
+        <div>
+          <label>Title: </label>
+          <p id="title"></p>
+        </div>
+        <div>
+          <label>Type: </label>
+          <p id="type"></p>
+        </div>
+        <div>
+          <label>Product: </label>
+          <p id="product"></p>
+        </div>
+        <div>
+          <label>Activity: </label>
+          <p id="activity"></p>
+        </div>
+        <div>
+          <label>Exchange: </label>
+          <p id="exchange"></p>
+        </div>
+        <div>
+          <label>PCP: </label>
+          <p id="pcp"></p>
+        </div>
+        <div>
+          <label>DPs: </label>
+          <p id="dps"></p>
+        </div>
+        <div>
+          <label>Date Received: </label>
+          <p id="dateReceived"></p>
+        </div>
+        <div>
+          <label>Date Required: </label>
+          <p id="dateRequired"></p>
+        </div>
+        <div>
+          <label>Priority: </label>
+          <p id="priority"></p>
+        </div>
+        <div>
+          <label>Requested By: </label>
+          <p id="requestedBy"></p>
+        </div>
+        <div>
+          <label>THP: </label>
+          <p id="thp"></p>
+        </div>
+        <div>
+          <label>Other: </label>
+          <p id="other"></p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- TABLE -->
+<div class="table-condensed table-responsive">
+  <table class="table table-hover" style="overflow-x: scroll;">
+    <thead style="overflow-x: scroll;">
+        <tr>
+          <th>Proj ID</th>
+          <th>Title</th>
+          <th>Type</th>
+          <th>Product</th>
+          <th>Activity</th>
+          <th>Exchange</th>
+          <th>PCP</th>
+          <th>DPs</th>
+          <th>Date Received</th>
+          <th>Date Required</th>
+          <th>Priority</th>
+          <th>Requested By</th>
+          <th>THP</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody style="overflow-x: scroll;">
+        {% for row in data %}
+        <tr class="clickable-row">
+          <td id="pid">{{ row[0] }}</td>
+          <td>{{ row[2] }}</td>
+          <td>{{ row[3] }}</td>
+          <td>{{ row[4] }}</td>
+          <td>{{ row[5] }}</td>
+          <td>{{ row[6] }}</td>
+          <td>{{ row[7] }}</td>
+          <td>{{ row[8] }}</td>
+          <td>{{ row[9] }}</td>
+          <td>{{ row[10] }}</td>
+          <td>{{ row[11] }}</td>
+          <td>{{ row[12] }}</td>
+          <td>{{ row[13] }}</td>
+          <td id="statusColumn">
+            <span id ="custStatus" class="glyphicon glyphicon-user">
+            <span id="spineStatus" class="glyphicon glyphicon-pencil">
+            <span id="commStatus" class="glyphicon glyphicon-wrench">
+            <span id="complete" class="glyphicon glyphicon-ok-circle">
+          </td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+<p id="jsonresponse"></p>
+
+{% endblock %}
