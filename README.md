@@ -7,4 +7,4 @@ TO DO:
   * Add users alloctation
 - Add OCR mapping (and questions) to request page
 
-Access the live page by going to https://46.101.47.45/PPR
+Access the live page by going to http://46.101.47.45/PPR
